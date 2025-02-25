@@ -1,11 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import PostCard from './components/postcard'; // Ensure this file exists
+import './App.css';
 
 function App() {
-
-  const initialPosts = [
+  const [posts, setPosts] = useState([
     {
       id: 1,
       profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg',
@@ -27,13 +25,18 @@ function App() {
       content: 'Just another day...',
       isLiked: false,
     },
-  ];
+  ]);
 
   return (
-    <>
-      
-    </>
-  )
+    <div>
+      <h1>Post Feed</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        {posts.map((post) => (
+          <PostCard key={post.id} {...post} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
